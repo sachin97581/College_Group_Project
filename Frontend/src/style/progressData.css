@@ -1,0 +1,10 @@
+.progressdata{
+    height: 22rem;
+    width: 100%;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(100, 71, 71); */
+    border: 3px solid black;
+    border-radius: 10px;
+}
