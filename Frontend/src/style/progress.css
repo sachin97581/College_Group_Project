@@ -2,11 +2,44 @@
   width: 80%;
   margin: auto;
   padding: 20px;
+  /* background-color: #836f6f; */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+  color: white;
 }
 
 .progress-title {
   text-align: center;
-  font-size: 28px;
-  font-weight: bold;
   margin-bottom: 20px;
+  font-size: 28px;
+  color: white;
+}
+
+.progress-form {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.progress-form input {
+  padding: 8px;
+  width: 60px;
+  text-align: center;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.progress-form button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.progress-form button:hover {
+  background-color: #45a049;
 }

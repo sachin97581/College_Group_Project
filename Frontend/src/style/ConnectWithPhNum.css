@@ -1,0 +1,73 @@
+/* Container styling */
+.send-sms-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Heading */
+.send-sms-container h2 {
+  font-size: 24px;
+  color: #4a148c;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.send-sms-container input,
+.send-sms-container textarea {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.send-sms-container input:focus,
+.send-sms-container textarea:focus {
+  border: 1px solid #4a148c;
+}
+
+/* Textarea */
+.send-sms-container textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Button */
+.send-sms-container button {
+  width: 90%;
+  padding: 14px;
+  background: #4a148c;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.send-sms-container button:hover {
+  background: #6a1b9a;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .send-sms-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .send-sms-container h2 {
+    font-size: 20px;
+  }
+}

@@ -22,6 +22,12 @@ const Header = () => {
       <div className='progress' onClick={() => navigate('/log-in')}>
         Log-in
       </div>
+      <div className='progress' onClick={() => navigate('/connect-with')}>
+        Connect-with
+      </div>
+      <div className='progress' onClick={() => navigate('/ai-chat')}>
+        AI-Chat
+      </div>
     </div>
   )
 }

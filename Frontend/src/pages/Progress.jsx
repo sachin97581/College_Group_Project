@@ -1,100 +1,80 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { BarChart } from "@mui/x-charts/BarChart";
+import "../style/Progress.css";
 
-import React from 'react';
-import Stack from '@mui/material/Stack';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import { BarChart } from '@mui/x-charts/BarChart';
-import ProgressData from '../pages/ProgressData';
-import '../style/Progress.css'
-
-// ✅ Sample dataset (Replace with your real data if needed)
-const dataset = [
-  { month: 'Jan', seoul: 50 },
-  { month: 'Feb', seoul: 80 },
-  { month: 'Mar', seoul: 65 },
-  { month: 'Apr', seoul: 100},
-  { month: 'May', seoul: 75 },
-  { month: 'Jun', seoul: 120},
+// Full 9 months dataset
+const fullDataset = [
+  { month: "1", seoul: 50 },
+  { month: "2", seoul: 60 },
+  { month: "3", seoul: 70 },
+  { month: "4", seoul: 80 },
+  { month: "5", seoul: 90 },
+  { month: "6", seoul: 100 },
+  { month: "7", seoul: 110 },
+  { month: "8", seoul: 120 },
+  { month: "9", seoul: 130 },
 ];
 
-const valueFormatter = (value) => `${value} mm`;
-
-function TickParamsSelector({
-  tickPlacement,
-  tickLabelPlacement,
-  setTickPlacement,
-  setTickLabelPlacement,
-}) {
-  return (
-    <Stack direction="column" spacing={2} sx={{ width: '100%', marginBottom: '20px' }}>
-      <FormControl>
-        <FormLabel>Tick Placement</FormLabel>
-        <RadioGroup
-          row
-          value={tickPlacement}
-          onChange={(event) => setTickPlacement(event.target.value)}
-        >
-          <FormControlLabel value="start" control={<Radio />} label="Start" />
-          <FormControlLabel value="end" control={<Radio />} label="End" />
-          <FormControlLabel value="middle" control={<Radio />} label="Middle" />
-          <FormControlLabel value="extremities" control={<Radio />} label="Extremities" />
-        </RadioGroup>
-      </FormControl>
-      <FormControl>
-        <FormLabel>Label Placement</FormLabel>
-        <RadioGroup
-          row
-          value={tickLabelPlacement}
-          onChange={(event) => setTickLabelPlacement(event.target.value)}
-        >
-          <FormControlLabel value="tick" control={<Radio />} label="Tick" />
-          <FormControlLabel value="middle" control={<Radio />} label="Middle" />
-        </RadioGroup>
-      </FormControl>
-    </Stack>
-  );
-}
+const valueFormatter = (value) => `${value} pts`;
 
 const chartSetting = {
-  yAxis: [
-    {
-      label: 'Rainfall (mm)',
-      width: 60,
-    },
-  ],
-  series: [{ dataKey: 'seoul', label: 'Seoul Rainfall', valueFormatter }],
+  yAxis: [{ label: "Pregnancy Progress", width: 60 , color: "#ffffffff" }],
+  series: [{ dataKey: "seoul", label: "Progress Points", valueFormatter }],
   height: 300,
+  color: ["#ffffffff"],
   margin: { left: 70 },
 };
 
 const Progress = () => {
-  const [tickPlacement, setTickPlacement] = React.useState('middle');
-  const [tickLabelPlacement, setTickLabelPlacement] = React.useState('middle');
+  const [currentMonth, setCurrentMonth] = useState("");
+  const [filteredData, setFilteredData] = useState(fullDataset);
+  const navigate = useNavigate();
 
-  return (      // backgroundColor:'purple' add here 4
-    <div style={{ width: '80%', margin: 'auto', padding: '20px' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Progress</h1>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (currentMonth >= 1 && currentMonth <= 9) {
+      const filtered = fullDataset.filter(
+        (item) => Number(item.month) >= Number(currentMonth)
+      );
+      setFilteredData(filtered);
+    } else {
+      alert("Please enter a valid month (1-9)");
+    }
+  };
 
-      <TickParamsSelector
-        tickPlacement={tickPlacement}
-        tickLabelPlacement={tickLabelPlacement}
-        setTickPlacement={setTickPlacement}
-        setTickLabelPlacement={setTickLabelPlacement}
-      />
+  const handleBarClick = (month) => {
+    navigate(`/advice/${month}`); // Navigate to advice page
+  };
 
+  return (
+    <div className="progress-container">
+      <h1 className="progress-title">Progress</h1>
+
+      {/* Form for current month */}
+      <form onSubmit={handleSubmit} className="progress-form">
+        <label>Enter your current pregnancy month (1-9): </label>
+        <input
+          type="number"
+          value={currentMonth}
+          onChange={(e) => setCurrentMonth(e.target.value)}
+          min="1"
+          max="9"
+          required
+        />
+        <button type="submit">Show Progress</button>
+      </form>
+
+      {/* Chart */}
       <BarChart
-        dataset={dataset}
-        xAxis={[{ dataKey: 'month', tickPlacement, tickLabelPlacement }]}
+        dataset={filteredData}
+        xAxis={[{ dataKey: "month" }]}
         {...chartSetting}
+        onItemClick={(event, dataPoint) => handleBarClick(dataPoint.month)}
       />
-        <ProgressData />
     </div>
   );
 };
 
 export default Progress;
-
 

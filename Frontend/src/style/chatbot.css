@@ -1,0 +1,48 @@
+/* Container styling */
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: #f8f9fa; /* Light background */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 40px auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Header styling */
+.chatbot-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.chatbot-header h1 {
+  font-size: 28px;
+  color: #4a148c; /* Deep purple */
+  margin-bottom: 10px;
+}
+
+.chatbot-header p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Frame wrapper */
+.chatbot-frame {
+  width: 100%;
+  height: 700px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Style the iframe */
+.chatbot-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

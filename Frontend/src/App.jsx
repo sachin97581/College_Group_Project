@@ -8,6 +8,9 @@ import Log_in from './pages/Log_in'
 import PatientContext from './context/PatientContext'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Progress from './pages/Progress'
+import PregnancyAdvice from './pages/PregnancyAdvice'
+import ChatBot from './pages/ChatBot'
+import Connect_with_PhNum from './pages/ConnectWithPhNum'
 
 function App() {
   return (
@@ -18,8 +21,11 @@ function App() {
           <Routes>
             <Route path="/" element={<PageBody />} />
             <Route path="/api/progress" element={<Progress />} />
+            <Route path="/api/chatbot" element={<ChatBot />} />
             <Route path="/sign-up" element={<Sign_up />} />
-            <Route path="/log-in" element={<Log_in />} />  
+            <Route path="/log-in" element={<Log_in />} /> 
+            <Route path="/advice/:month" element={<PregnancyAdvice />} /> 
+            <Route path='/connect-with' element={<Connect_with_PhNum/>}/>
             {/* Add more routes as needed */}
           </Routes>
           {/* <Miscarriage /> */}

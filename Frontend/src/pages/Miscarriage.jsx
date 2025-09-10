@@ -5,7 +5,7 @@ import '../style/Miscarriage.css'
 const Miscarriage = () => {
   return (
     <div className='miscarriagePageBody'>
-        <h1>The Best Solutions of Miscarriage's Problem</h1>
+        <h1>Know About Miscarriage's Problem</h1>
        <div className='miscarriageCard'>
          <Card />
         <Card />
