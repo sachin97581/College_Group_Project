@@ -21,6 +21,7 @@ const PregnancyAdvice = () => {
 
   return (
     <div style={{ padding: '20px', width: '60%', margin: 'auto' }}>
+      <h1>This Content only Study purpose</h1>
       <h1>Month {month} Advice</h1>
       <h2>✅ Things to Do:</h2>
       <ul>{info.do.map((item, index) => <li key={index}>{item}</li>)}</ul>

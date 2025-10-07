@@ -1,46 +1,349 @@
-.pagebody{
-    height: 38rem;
-    margin: 1rem 0 1rem 0;
+/* Main Page Body Container */
+.pagebody {
+    min-height: 40rem;
+    margin: 2rem auto;
+    max-width: 1400px;
     display: flex;
-    border-radius: 5px;
     align-items: center;
     position: relative;
-    /* background-color: #f6fafd; */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 2rem;
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    overflow: hidden;
 }
 
-.pagebody1{
-    height: 36rem;
+/* Decorative Background Elements */
+.pagebody::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 20s ease-in-out infinite;
+}
+
+.pagebody::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(240, 147, 251, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 15s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-30px) translateX(20px);
+    }
+}
+
+/* Image Section */
+.pagebody1 {
+    height: auto;
     width: 45%;
-    margin: 1rem;
     display: flex;
-    border-radius: 10px;
     align-items: center;
     justify-content: center;
-    /* background-color: #e0f7fa; */
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
 }
 
-.pagebody2{
-    height: 34rem;
+/* Image Container with Animation */
+.img {
+    height: 35rem;
+    width: 100%;
+    max-width: 28rem;
+    border-radius: 20px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 60px rgba(102, 126, 234, 0.3));
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: imageEntry 0.8s ease-out;
+}
+
+@keyframes imageEntry {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+    }
+}
+
+.img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 25px 70px rgba(102, 126, 234, 0.4));
+}
+
+/* Content Section */
+.pagebody2 {
+    height: auto;
     width: 55%;
-    margin: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 10px;
-    /* background-color: #fff; */
-    color: #fff;
-    padding: 2rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    padding: 3rem;
+    position: relative;
+    z-index: 1;
+    animation: contentEntry 1s ease-out 0.3s both;
 }
 
-.img{
-    height: 90%;
-    width: auto;
-    max-width: 100%;
-    border-radius: 10px;
-    object-fit: contain;
-    /* background-color: #e2e8f0; */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+@keyframes contentEntry {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Heading Styles */
+.pagebody2 h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    position: relative;
+    animation: gradientShift 8s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Decorative Line Under Heading */
+.pagebody2 h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 120px;
+    height: 5px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 3px;
+    animation: expandLine 1s ease-out 0.5s both;
+}
+
+@keyframes expandLine {
+    from {
+        width: 0;
+    }
+    to {
+        width: 120px;
+    }
+}
+
+/* Paragraph Styles */
+.pagebody2 p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #4a5568;
+    margin-top: 1.5rem;
+    max-width: 600px;
+    text-align: justify;
+    font-weight: 400;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.pagebody2 p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+/* CTA Button (if you want to add one) */
+.cta-button {
+    margin-top: 2.5rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    max-width: 250px;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 1024px) {
+    .pagebody {
+        min-height: auto;
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .pagebody1 {
+        width: 42%;
+        padding: 1.5rem;
+    }
+
+    .pagebody2 {
+        width: 58%;
+        padding: 2rem;
+    }
+
+    .pagebody2 h1 {
+        font-size: 2.5rem;
+    }
+
+    .pagebody2 p {
+        font-size: 1.1rem;
+    }
+
+    .img {
+        height: 30rem;
+        max-width: 24rem;
+    }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+    .pagebody {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        margin: 1rem;
+        border-radius: 20px;
+    }
+
+    .pagebody1 {
+        width: 100%;
+        margin-bottom: 2rem;
+        padding: 1rem;
+    }
+
+    .pagebody2 {
+        width: 100%;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .pagebody2 h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .pagebody2 h1::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .pagebody2 p {
+        font-size: 1rem;
+        text-align: center;
+        padding-left: 0;
+        margin: 1.5rem auto 0;
+    }
+
+    .pagebody2 p::before {
+        display: none;
+    }
+
+    .img {
+        height: 25rem;
+        max-width: 100%;
+    }
+
+    .cta-button {
+        margin: 2rem auto 0;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .pagebody {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .pagebody2 h1 {
+        font-size: 1.75rem;
+    }
+
+    .pagebody2 p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .img {
+        height: 20rem;
+    }
+}
+
+/* Smooth Fade-in for Image Change */
+.img {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Add Image Indicators (Optional) */
+.image-indicators {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem;
+    z-index: 2;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.indicator-dot.active {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    width: 35px;
+    border-radius: 6px;
 }

@@ -4,7 +4,7 @@
     padding: 2rem;
     max-width: 1200px;
     border-radius: 12px;
-    /* background: linear-gradient(to right, #314c61, #010101); Gradient background */
+     /* background: linear-gradient(to right, #314c61, #010101);Gradient background; */
     color: #fff;
     text-align: center;
     /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); */
@@ -15,7 +15,7 @@
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 2rem;
-    color: #f8fafc;
+    color: #ffffff;
 }
 
 /* Card container layout */
@@ -23,7 +23,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
     gap: 2rem; /* Gap between cards */
-    justify-items: center;
+    /* justify-items: center; */
     padding: 1rem;
 }
 

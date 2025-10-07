@@ -5,7 +5,7 @@ import "../style/Progress.css";
 
 // Full 9 months dataset
 const fullDataset = [
-  { month: "1", seoul: 50 },
+  { month: "1", seoul: 60 },
   { month: "2", seoul: 60 },
   { month: "3", seoul: 70 },
   { month: "4", seoul: 80 },
@@ -19,16 +19,16 @@ const fullDataset = [
 const valueFormatter = (value) => `${value} pts`;
 
 const chartSetting = {
-  yAxis: [{ label: "Pregnancy Progress", width: 60 , color: "#ffffffff" }],
+  yAxis: [{ label: "Pregnancy Progress", width: 60, color: "#ffffffff" }],
   series: [{ dataKey: "seoul", label: "Progress Points", valueFormatter }],
   height: 300,
-  color: ["#ffffffff"],
   margin: { left: 70 },
 };
 
 const Progress = () => {
   const [currentMonth, setCurrentMonth] = useState("");
   const [filteredData, setFilteredData] = useState(fullDataset);
+  // console.log("filtered data is ", filteredData);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -44,8 +44,10 @@ const Progress = () => {
   };
 
   const handleBarClick = (month) => {
-    navigate(`/advice/${month}`); // Navigate to advice page
+    navigate(`/advice/${month}`);
+    // console.log("Navigating to advice for month:", month);
   };
+
 
   return (
     <div className="progress-container">
@@ -70,7 +72,11 @@ const Progress = () => {
         dataset={filteredData}
         xAxis={[{ dataKey: "month" }]}
         {...chartSetting}
-        onItemClick={(event, dataPoint) => handleBarClick(dataPoint.month)}
+        onItemClick={(event, dataPoint) => {
+          const clickedMonth = filteredData[dataPoint.dataIndex]?.month;
+          // console.log("Clicked month is", clickedMonth);
+          if (clickedMonth) handleBarClick(clickedMonth);
+        }}
       />
     </div>
   );

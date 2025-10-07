@@ -1,30 +1,221 @@
-.main{
-    height: 4.5rem;
-    margin: 1rem 0;
+/* Main Header Container */
+.main {
+    height: 5rem;
     display: flex;
     align-items: center;
-    /* position: relative; */
-    /* justify-content: space-between; */
-    border-radius: 10px;
-    background: linear-gradient(90deg, #e0f7fa 0%, #b2ebf2 100%);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 0 2.5rem;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
+    padding: 0 3rem;
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
-.logo, .progress, .chatbot {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #0d47a1;
+/* Logo Styling */
+.logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
     cursor: pointer;
-    padding: 0.5rem 1.5rem;
-    border-radius: 6px;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     user-select: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    letter-spacing: 1px;
 }
 
-.logo:hover, .progress:hover, .chatbot:hover {
-    background: #b2ebf2;
-    color: #006064;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+.logo:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Container */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* Navigation Items */
+.progress, .chatbot {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0.65rem 1.25rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    user-select: none;
+    position: relative;
+    background: transparent;
+    white-space: nowrap;
+}
+
+.progress::before, .chatbot::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.progress:hover, .chatbot:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.progress:hover::before, .chatbot:hover::before {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Active State */
+.progress.active, .chatbot.active {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Menu Open State */
+.mobile-menu-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.mobile-menu-btn.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 1024px) {
+    .main {
+        padding: 0 2rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .progress, .chatbot {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+    .main {
+        padding: 0 1.5rem;
+        height: 4.5rem;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    /* Hide navigation items by default on mobile */
+    .main > .progress,
+    .main > .chatbot {
+        display: none;
+    }
+
+    /* Mobile Navigation Wrapper */
+    .main.menu-open {
+        height: auto;
+        padding-bottom: 1rem;
+    }
+
+    .main.menu-open > .progress,
+    .main.menu-open > .chatbot {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .main {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .progress, .chatbot {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add glassmorphism effect */
+@supports (backdrop-filter: blur(10px)) {
+    .main {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+        backdrop-filter: blur(10px);
+    }
 }
