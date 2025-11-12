@@ -50,8 +50,10 @@ const Header = () => {
       <div className='progress' onClick={() => handleNavigation('/log-in')}>
         Log-in
       </div>
-      
-      
+      <div className='progress' onClick={() => handleNavigation('/profile')}>
+        Profile
+      </div>
+    
     </div>
   )
 }
