@@ -1,13 +1,55 @@
 /* Main container styling */
-.miscarriagePageBody {
+/* .miscarriagePageBody {
     margin: 2rem auto;
     padding: 2rem;
     max-width: 1200px;
     border-radius: 12px;
-     /* background: linear-gradient(to right, #314c61, #010101);Gradient background; */
     color: #fff;
     text-align: center;
-    /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); */
+} */
+
+/* Main container styling */
+.miscarriagePageBody {
+  min-height: 10rem;
+  margin: 0;
+  padding: 3rem 2rem;
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  /* position: relative; */
+  /* overflow-x: hidden; */
+  text-align: center;
+}
+
+/* Add a subtle pattern overlay */
+/* .miscarriagePageBody::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+} */
+
+/* Header section */
+.miscarriage-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.miscarriage-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
 /* Heading styling */
@@ -19,16 +61,27 @@
 }
 
 /* Card container layout */
-.miscarriageCard {
+/* .miscarriageCard {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-    gap: 2rem; /* Gap between cards */
-    /* justify-items: center; */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     padding: 1rem;
+} */
+
+/* Card container layout */
+.miscarriageCard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Individual Card styling */
-.miscarriageCard .card {
+/* .miscarriageCard .card {
     background-color: #ffffff;
     color: #333;
     padding: 1rem;
@@ -37,7 +90,33 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
     max-width: 300px;
+} */
+
+/* Individual Card styling - targeting your Card component */
+.miscarriageCard .card {
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* width: 100%; */
+  width: 25rem;
+  /* height: 100%; */
+  height: 17rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+
+/* Card entrance animations */
+.miscarriageCard > a:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s backwards; }
+.miscarriageCard > a:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s backwards; }
+.miscarriageCard > a:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s backwards; }
+.miscarriageCard > a:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.4s backwards; }
+.miscarriageCard > a:nth-child(5) { animation: fadeInUp 0.6s ease-out 0.5s backwards; }
+.miscarriageCard > a:nth-child(6) { animation: fadeInUp 0.6s ease-out 0.6s backwards; }
+
+
 
 /* Hover effect for cards */
 .miscarriageCard .card:hover {
