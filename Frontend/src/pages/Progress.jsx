@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BarChart } from "@mui/x-charts/BarChart";
 import "../style/Progress.css";
+// import bgImage from "./image/10554240.jpg";
+import bgImage from "../image/10554240.jpg";
 
 // Full 9 months dataset
 const fullDataset = [
@@ -50,7 +52,16 @@ const Progress = () => {
 
 
   return (
-    <div className="progress-container">
+    <div className="progress-container"
+    // style={{
+    //     minHeight: "100vh",
+    //     backgroundColor:"#ee220bff",
+    //     // backgroundImage: `url(${bgImage})`,
+    //     backgroundSize: "cover",
+    //     backgroundPosition: "center",
+    //     backgroundRepeat: "no-repeat"
+    //   }}
+    >
       <h1 className="progress-title">Progress</h1>
 
       {/* Form for current month */}

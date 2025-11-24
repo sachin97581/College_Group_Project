@@ -28,7 +28,11 @@ const PageBody = () => {
 
   return (
     <>
-      <div className='pagebody'>
+      <div className='pagebody'
+      // style={{
+      //   backgroundColor:"red"
+      // }}
+      >
         <div className='pagebody1'>
           <img 
             key={currentIndex} // Key prop forces re-render for animation

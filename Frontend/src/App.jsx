@@ -27,13 +27,14 @@ function App() {
   return (
     <div
       className="App"
-      style={{
-        minHeight: "100vh",
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
-      }}
+      // style={{
+      //   minHeight: "100vh",
+      //   // backgroundColor:"#CBF3F0",
+      //   backgroundImage: `url(${bgImage})`,
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      //   backgroundRepeat: "no-repeat"
+      // }}
     >
       <PatientContext>
         <BrowserRouter>

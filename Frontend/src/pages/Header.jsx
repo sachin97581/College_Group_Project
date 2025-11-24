@@ -41,12 +41,12 @@ const Header = () => {
       <div className='progress' onClick={() => handleNavigation('/ai-chat')}>
         AI-Chat
       </div>
-      <div className='progress' onClick={() => handleNavigation('/connect-with')}>
+      {/* <div className='progress' onClick={() => handleNavigation('/connect-with')}>
         Connect-with
-      </div>
-      <div className='progress' onClick={() => handleNavigation('/sign-up')}>
+      </div> */}
+      {/* <div className='progress' onClick={() => handleNavigation('/sign-up')}>
         Sign-up
-      </div>
+      </div> */}
       <div className='progress' onClick={() => handleNavigation('/log-in')}>
         Log-in
       </div>

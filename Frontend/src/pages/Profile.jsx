@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../style/Profile.css";
+import profileImage from "../image/img4-removebg-preview.png";
+// import "../style/Profile.css";
+import "../style/profileGoogleFitPollution.css"
+import Google_FIL_API from "./Google_FIL_API";
+import Pollution from "./Pollution";
 
 function Profile() {
   const [patient, setPatient] = useState(null);
@@ -64,11 +68,22 @@ function Profile() {
   if (error) return <div className="profile-container error">{error}</div>;
   if (!patient) return <div className="profile-container">No data found</div>;
 
-  return (
-    <div className="profile-container">
-      <h1>Patient Profile</h1>
+ return (
+  <div className="profile-container">
+
+    <h1 className="profile-title">Patient Profile</h1>
+
+    <div className="profile-wrapper">
+
+      {/* LEFT SIDE IMAGE */}
+      <div className="profile-image-box">
+        <img src={profileImage} alt="Profile" className="profile-image" />
+      </div>
+
+      {/* RIGHT SIDE DETAILS */}
       <div className="profile-card">
-        <p><strong>ID:</strong> {patient._id}</p>
+
+        {/* <p><strong>ID:</strong> {patient._id}</p> */}
         <p><strong>Name:</strong> {patient.name}</p>
         <p><strong>Email:</strong> {patient.email}</p>
         <p><strong>Disease:</strong> {patient.discease}</p>
@@ -78,9 +93,16 @@ function Profile() {
           <strong>Created At:</strong>{" "}
           {new Date(patient.createdAt).toLocaleDateString()}
         </p>
+
+        {/* EDIT PROFILE BUTTON */}
+        <button className="edit-btn">Edit Profile</button>
       </div>
     </div>
-  );
+    <br /><br />
+    <Google_FIL_API/>
+    <Pollution/>
+  </div>
+);
 }
 
 export default Profile;

@@ -1,347 +1,315 @@
-/* Progress Container */
+/* Progress Component Styles */
 .progress-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 3rem auto;
-  padding: 3rem 2.5rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
-  border-radius: 30px;
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+  min-height: 100vh;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
 }
 
-/* Decorative Background Elements */
+/* Background Animation */
 .progress-container::before {
   content: '';
   position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 6s ease-in-out infinite;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: backgroundMove 20s linear infinite;
+  opacity: 0.3;
 }
 
-.progress-container::after {
-  content: '';
-  position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(240, 147, 251, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 8s ease-in-out infinite reverse;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.5;
+@keyframes backgroundMove {
+  0% {
+    transform: translate(0, 0);
   }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.8;
+  100% {
+    transform: translate(50px, 50px);
   }
 }
 
-/* Title Styling */
+/* Progress Title */
 .progress-title {
-  text-align: center;
-  margin-bottom: 2.5rem;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -1px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 0.8s ease-out;
   position: relative;
   z-index: 1;
-  animation: titleEntry 0.8s ease-out;
-}
-
-@keyframes titleEntry {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  letter-spacing: 1px;
 }
 
 .progress-title::after {
   content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  margin: 1rem auto 0;
   border-radius: 2px;
 }
 
-/* Form Styling */
-.progress-form {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  border-radius: 20px;
-  border: 2px solid rgba(102, 126, 234, 0.1);
-  position: relative;
-  z-index: 1;
-  animation: formEntry 0.8s ease-out 0.2s both;
-}
-
-@keyframes formEntry {
-  from {
+@keyframes fadeInDown {
+  0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-30px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.progress-form label {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #2d3748;
-  display: inline-block;
-  margin-right: 1rem;
-}
-
-/* Input Field Styling */
-.progress-form input {
-  padding: 0.75rem 1rem;
-  width: 80px;
-  text-align: center;
-  margin: 0 1rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: 2px solid rgba(102, 126, 234, 0.3);
-  border-radius: 12px;
-  background: white;
-  color: #667eea;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
-}
-
-.progress-form input:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.25);
-  transform: translateY(-2px);
-}
-
-.progress-form input:hover {
-  border-color: #667eea;
-}
-
-/* Button Styling */
-.progress-form button {
-  margin-left: 1rem;
-  padding: 0.75rem 2rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-form button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
-}
-
-.progress-form button:hover::before {
-  left: 100%;
-}
-
-.progress-form button:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
-}
-
-.progress-form button:active {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
-}
-
-/* Chart Container Styling */
-.progress-container > div {
+/* Progress Form */
+.progress-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.6s ease-out 0.2s backwards;
   position: relative;
   z-index: 1;
-  background: white;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  animation: chartEntry 0.8s ease-out 0.4s both;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-@keyframes chartEntry {
-  from {
+@keyframes scaleIn {
+  0% {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
-  to {
+  100% {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-/* Chart Hover Effect */
-.progress-container > div:hover {
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-  transform: translateY(-5px);
-  transition: all 0.3s ease;
-}
-
-/* Info Box (Optional) */
-.info-box {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(240, 147, 251, 0.08) 100%);
-  border-left: 4px solid #667eea;
-  border-radius: 12px;
-  color: #2d3748;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.info-box strong {
-  color: #667eea;
+.progress-form label {
+  font-size: 1.2rem;
   font-weight: 600;
+  color: #2d3748;
+  text-align: center;
+  margin: 0;
 }
 
-/* Responsive Design - Tablet */
+.progress-form input[type="number"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.progress-form input[type="number"]:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.progress-form input[type="number"]:hover {
+  border-color: #a0aec0;
+}
+
+.progress-form button {
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.progress-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.progress-form button:active {
+  transform: translateY(-1px);
+}
+
+/* Chart Container Wrapper */
+.progress-container > div:last-child {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: slideInUp 0.8s ease-out 0.4s backwards;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 900px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chart Styling Overrides */
+.progress-container svg {
+  cursor: pointer;
+}
+
+.progress-container svg text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
   .progress-container {
-    width: 92%;
-    padding: 2.5rem 2rem;
+    padding: 3rem 2rem;
+    gap: 2.5rem;
+  }
+
+  .progress-title {
+    font-size: 3rem;
+  }
+
+  .progress-form {
+    padding: 2rem 2.5rem;
+  }
+
+  .progress-container > div:last-child {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .progress-container {
+    padding: 2.5rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .progress-title {
+    font-size: 2.5rem;
+  }
+
+  .progress-form {
+    padding: 1.8rem 2rem;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .progress-form label {
+    font-size: 1.1rem;
+  }
+
+  .progress-form input[type="number"] {
+    max-width: 100%;
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .progress-form button {
+    width: 100%;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  .progress-container > div:last-child {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-container {
+    padding: 2rem 1rem;
+    gap: 1.5rem;
   }
 
   .progress-title {
     font-size: 2rem;
   }
 
-  .progress-form label {
-    font-size: 1rem;
-  }
-}
-
-/* Responsive Design - Mobile */
-@media (max-width: 768px) {
-  .progress-container {
-    width: 95%;
-    padding: 2rem 1.5rem;
-    margin: 2rem auto;
-  }
-
-  .progress-title {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
+  .progress-title::after {
+    width: 60px;
+    height: 3px;
   }
 
   .progress-form {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1.5rem;
   }
 
   .progress-form label {
-    display: block;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .progress-form input[type="number"] {
+    padding: 0.8rem 1rem;
     font-size: 0.95rem;
   }
 
-  .progress-form input {
-    margin: 0.5rem;
-    width: 70px;
-  }
-
   .progress-form button {
-    margin: 0.5rem 0 0 0;
-    width: 100%;
-    max-width: 200px;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
   }
 
-  .progress-container > div {
+  .progress-container > div:last-child {
     padding: 1rem;
   }
 }
 
-/* Extra Small Devices */
-@media (max-width: 480px) {
-  .progress-container {
-    padding: 1.5rem 1rem;
-  }
-
-  .progress-title {
-    font-size: 1.5rem;
-  }
-
-  .progress-form {
-    padding: 1.25rem 0.75rem;
-  }
-
-  .progress-form label {
-    font-size: 0.9rem;
-  }
-
-  .progress-form input {
-    width: 60px;
-    font-size: 1rem;
-  }
-
-  .progress-form button {
-    font-size: 0.95rem;
-    padding: 0.65rem 1.5rem;
-  }
+/* Loading State (Optional) */
+.progress-container.loading {
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-/* Loading Animation (Optional) */
-.loading-spinner {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+.progress-container.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
   border-radius: 50%;
-  border-top-color: white;
-  animation: spin 0.8s linear infinite;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+  z-index: 100;
 }
 
 @keyframes spin {
   to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Success Message Animation */
-@keyframes successPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 15px rgba(102, 126, 234, 0);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }

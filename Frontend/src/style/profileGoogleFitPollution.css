@@ -1,0 +1,469 @@
+/* ===================================
+   PROFILE PAGE STYLES
+   =================================== */
+
+/* Main Container */
+.profile-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Title */
+.profile-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+}
+
+/* Profile Wrapper - Flexbox Layout */
+.profile-wrapper {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Left Side - Image Box */
+.profile-image-box {
+  flex: 0 0 300px;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+.profile-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* Right Side - Profile Card */
+.profile-card {
+  flex: 1;
+  min-width: 320px;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+.profile-card p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 15px 0;
+  line-height: 1.8;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 12px;
+}
+
+.profile-card p:last-of-type {
+  border-bottom: none;
+}
+
+.profile-card strong {
+  color: #667eea;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 130px;
+}
+
+/* Edit Button */
+.edit-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.edit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.edit-btn:active {
+  transform: translateY(0);
+}
+
+/* Error State */
+.error {
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+/* ===================================
+   GOOGLE FIT API STYLES
+   =================================== */
+
+.google-fit-container {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.google-fit-title {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.google-fit-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.google-fit-btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.google-fit-btn.connect {
+  background: #4285F4;
+  color: white;
+}
+
+.google-fit-btn.fetch {
+  background: #34A853;
+  color: white;
+}
+
+.google-fit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.google-fit-btn:active {
+  transform: translateY(0);
+}
+
+.google-fit-loading {
+  text-align: center;
+  color: #667eea;
+  font-size: 1.1rem;
+  padding: 20px;
+}
+
+.google-fit-error {
+  text-align: center;
+  color: #e53e3e;
+  background: #fff5f5;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  border-left: 4px solid #e53e3e;
+}
+
+.google-fit-data {
+  margin-top: 30px;
+}
+
+.google-fit-data h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.steps-table {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.steps-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.steps-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.steps-table td {
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.steps-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+.steps-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.google-fit-placeholder {
+  text-align: center;
+  color: #666;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+
+/* ===================================
+   POLLUTION COMPONENT STYLES
+   =================================== */
+
+.pollution-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.pollution-loader {
+  text-align: center;
+  color: #667eea;
+  font-size: 1.3rem;
+  padding: 60px;
+}
+
+.pollution-title {
+  text-align: center;
+  color: #333;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Summary Cards Grid */
+.pollution-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.pollution-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pollution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}
+
+.pollution-card h3 {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pollution-card p {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Chart Boxes */
+.chart-box {
+  background: #f7fafc;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.chart-box:hover {
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+.chart-box h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  .profile-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-image-box {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .profile-card {
+    width: 100%;
+  }
+
+  .profile-title {
+    font-size: 2rem;
+  }
+
+  .pollution-title {
+    font-size: 1.8rem;
+  }
+
+  .pollution-cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .pollution-card p {
+    font-size: 1.5rem;
+  }
+
+  .chart-box {
+    padding: 20px;
+  }
+
+  .google-fit-container {
+    padding: 25px;
+  }
+
+  .google-fit-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .google-fit-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 20px 10px;
+  }
+
+  .profile-title {
+    font-size: 1.6rem;
+  }
+
+  .profile-card {
+    padding: 25px;
+  }
+
+  .profile-card p {
+    font-size: 1rem;
+  }
+
+  .pollution-container {
+    padding: 25px 15px;
+  }
+
+  .pollution-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
