@@ -1,0 +1,88 @@
+.appointments-container {
+  padding: 2rem 4rem;
+  min-height: 80vh;
+  background: linear-gradient(135deg, #edf2fb, #d7e3fc);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #5a5ce4, #764ba2);
+  /* -webkit-background-clip: text; */
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.appointments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.appointment-card {
+  background: #ffffff;
+  padding: 1.4rem;
+  border-radius: 16px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+  text-align: center;
+}
+
+.appointment-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.doctor-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.info {
+  font-size: 1rem;
+  margin-top: .4rem;
+  color: #555;
+}
+
+/* Status Colors */
+.status {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: .3rem 1rem;
+  border-radius: 50px;
+  margin: .6rem 0;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.accepted {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.no-appointments {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #444;
+  grid-column: 1 / -1;
+}
+
+/* Mobile Responsive */
+@media(max-width: 600px) {
+  .appointments-container {
+    padding: 1.5rem;
+  }
+}

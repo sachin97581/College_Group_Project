@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import profileImage from "../image/img4-removebg-preview.png";
-// import "../style/Profile.css";
-import "../style/profileGoogleFitPollution.css"
+import "../style/profileGoogleFitPollution.css";
 import Google_FIL_API from "./Google_FIL_API";
 import Pollution from "./Pollution";
 
@@ -9,12 +9,18 @@ function Profile() {
   const [patient, setPatient] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3000";
-  // Common possible profile endpoints (tries each until success)
-  const endpoints = [
-    `${API_BASE}/patients/profile`,
-  ];
+
+  const endpoints = [`${API_BASE}/patients/profile`];
+
+  // ✅ MOVE handleNavigation HERE
+  const handleNavigation = (path) => {
+    navigate(path);
+    setMenuOpen(false);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -32,31 +38,25 @@ function Profile() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
 
-          // network OK but server returned error status
           if (!res.ok) {
             const body = await res.json().catch(() => ({}));
-            const message = body.error || body.message || `Status ${res.status}`;
-            lastError = `Endpoint ${url} -> ${message}`;
-            // try next endpoint
+            lastError =
+              body.error || body.message || `Status ${res.status}`;
             continue;
           }
 
           const data = await res.json();
           setPatient(data.patient);
-          setError(null);
           setLoading(false);
           return;
         } catch (err) {
-          // network error (CORS, server down, wrong port)
-          lastError = `Network error when calling ${url}: ${err.message}`;
-          // try next endpoint
+          lastError = `Network error at ${url}: ${err.message}`;
         }
       }
-
       setError(lastError || "Failed to fetch profile");
       setLoading(false);
     };
@@ -68,41 +68,40 @@ function Profile() {
   if (error) return <div className="profile-container error">{error}</div>;
   if (!patient) return <div className="profile-container">No data found</div>;
 
- return (
-  <div className="profile-container">
+  return (
+    <div className="profile-container">
+      <h1 className="profile-title">Patient Profile</h1>
 
-    <h1 className="profile-title">Patient Profile</h1>
+      <div className="profile-wrapper"> 
+        <div className="profile-image-box">
+          <img src={profileImage} alt="Profile" className="profile-image" />
+        </div>
 
-    <div className="profile-wrapper">
+        <div className="profile-card">
+          <p><strong>Name:</strong> {patient.name}</p>
+          <p><strong>Email:</strong> {patient.email}</p>
+          <p><strong>Disease:</strong> {patient.discease}</p>
+          <p><strong>Age:</strong> {patient.age}</p>
+          <p><strong>Condition:</strong> {patient.condition}</p>
+          {/* <p>
+            <strong>Created At:</strong>{" "}
+            {new Date(patient.createdAt).toLocaleDateString()}
+          </p> */}
 
-      {/* LEFT SIDE IMAGE */}
-      <div className="profile-image-box">
-        <img src={profileImage} alt="Profile" className="profile-image" />
+          <button className="edit-btn" onClick={ () => handleNavigation("/your-appointments")}>Your Appointments</button>
+
+          {/* ✅ FIXED — NOW handleNavigation WORKS */}
+          <button
+            className="edit-btn"
+            onClick={() => handleNavigation("/add-family")}>Add Family Member</button>
+        </div>
       </div>
 
-      {/* RIGHT SIDE DETAILS */}
-      <div className="profile-card">
-
-        {/* <p><strong>ID:</strong> {patient._id}</p> */}
-        <p><strong>Name:</strong> {patient.name}</p>
-        <p><strong>Email:</strong> {patient.email}</p>
-        <p><strong>Disease:</strong> {patient.discease}</p>
-        <p><strong>Age:</strong> {patient.age}</p>
-        <p><strong>Condition:</strong> {patient.condition}</p>
-        <p>
-          <strong>Created At:</strong>{" "}
-          {new Date(patient.createdAt).toLocaleDateString()}
-        </p>
-
-        {/* EDIT PROFILE BUTTON */}
-        <button className="edit-btn">Edit Profile</button>
-      </div>
+      <br /><br />
+      {/* <Google_FIL_API /> */}
+      <Pollution />
     </div>
-    <br /><br />
-    <Google_FIL_API/>
-    <Pollution/>
-  </div>
-);
+  );
 }
 
 export default Profile;

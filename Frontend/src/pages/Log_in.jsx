@@ -25,17 +25,39 @@ const Log_in = () => {
 
       const response = await axios.post("http://localhost:3000/patients/login", patientData);
 
+      // if (response.status === 200) {
+      //   const data = response.data;
+      //   setPatient(data.user);
+      //   localStorage.setItem('token', data.token);
+
+      //   toast.success("🎉 You logged in successfully!", { position: "top-center" });
+
+      //   setTimeout(() => {
+      //     navigate('/');
+      //   }, 1000); // delay for toast
+      // }
+
       if (response.status === 200) {
         const data = response.data;
-        setPatient(data.user);
-        localStorage.setItem('token', data.token);
 
-        toast.success("🎉 You logged in successfully!", { position: "top-center" });
+        // Save user context
+        setPatient(data.user);
+
+        // Save token
+        localStorage.setItem("token", data.token);
+
+        // ⭐ Save user to localStorage so Add Family page can read patientId
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        toast.success("🎉 You logged in successfully!", {
+          position: "top-center",
+        });
 
         setTimeout(() => {
-          navigate('/');
-        }, 1500); // delay for toast
+          navigate("/");
+        }, 1000);
       }
+
     } catch (error) {
       console.error("Login error:", error);
       if (error.response && error.response.data.error) {
@@ -152,7 +174,7 @@ export default Log_in;
 
 //   //         <p>New here? <Link to={'/sign-up'}>Create new Account</Link></p>
 //   //       </form>
-//   //     </div> 
+//   //     </div>
 //   //    </div>
 //   // )
 

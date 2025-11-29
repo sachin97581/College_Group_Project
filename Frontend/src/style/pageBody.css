@@ -66,6 +66,33 @@
   }
 }
 
+/* Floating Medical Icons */
+.floating-icon {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.8;
+  animation: floatIcons 6s ease-in-out infinite;
+}
+
+.icon1 { top: 20%; left: 5%; color: #ff4d6d; }     /* Heart */
+.icon2 { top: -8%; left: 30%; color: #5b8def;}       /* Medical Cross */
+.icon3 { bottom: 8%; left: 5%; color: #ffb703;}   /* Baby icon */
+.icon4 { top: 20%; right: 2%; color: #36c28a;}     /* Pill */
+.icon5 { bottom: 25%; right: 4%; color: #8e44ad;}  /* Stethoscope */
+
+@keyframes floatIcons {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(10deg); }
+}
+
+/* Make icons responsive */
+@media(max-width: 768px) {
+  .floating-icon {
+    font-size: 1.8rem;
+  }
+}
+
+
 /* Image Indicators */
 .image-indicators {
   display: flex;
