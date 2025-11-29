@@ -21,6 +21,9 @@ import Card5 from './MiscarriageData/Card5'
 import Card6 from './MiscarriageData/Card6'
 import Footer from './pages/Footer'
 import Profile from './pages/Profile'
+import AddFamilyForm from '../extraPages/AddFamilyForm'
+import AppointmentForm from '../extraPages/AppointmentForm'
+import PatientAppointments from '../extraPages/PatientAppointments'
 
 
 function App() {
@@ -57,6 +60,9 @@ function App() {
             <Route path='/connect-with' element={<Connect_with_PhNum/>}/>
             <Route path="/ai-chat" element={<Ai_Chat />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path='/add-family' element={<AddFamilyForm/>}/>
+            <Route path='/add-appointment' element={<AppointmentForm/>}/>
+            <Route path='/your-appointments' element={<PatientAppointments/>}/>
           </Routes>
           {/* <Miscarriage /> */}
         </BrowserRouter>
